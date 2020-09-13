@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style>
+#about{
+    width: 100%;
+    min-height: 80vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+ol{
+    list-style-position: outside;
+    margin: 1rem 10rem;
+}
+ol li{
+    border-bottom: 1px solid grey;
+    padding: 10px;
+}
+</style>
+{% endblock%}
+{% block body %}
+<div id="about">
+<h1>About Site</h1>
+<hr>
+<p>This site take the best video for programming which is tested by our community.<br>
+Because nowdays,in youtube a lot of videos are present which most of them is not working and fake.<br>
+So this site take working videos tested by our community.<br>
+It list all the language and framework  videos to make learn easily.<br>
+This site take out beiginner to advanced topic on language and framework.<hr> 
+</p>
+<h2>Uploading Video Process</h2>
+<ol >
+    <li>First of all,make you account on website and login </li>
+    <li>Goto Profile->Upload</li>
+    <li>Copy the link of youtube video that you want to share</li>
+    <li>Take an appropriate title for video(eg. Deloping , Setup , Introduction ,Testing etc...)</li>
+    <li>Choose the correct language or framework or algorithm &datastructure or Timecomplexity based on your video that you are uploading</li>
+    <li>Then upload it</li>
+</ol>
+</div>
+{% endblock %}

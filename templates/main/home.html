@@ -1,0 +1,85 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style>
+    .like:hover{
+        color: red;
+  }
+  .s{
+      position: relative;
+      width: 100%;
+      height: 500px;
+      border-radius: 20px 20px 0px 0px;
+  }
+  .video{
+      justify-content: center;
+      text-align: center;
+      border: 1px solid black;
+      margin-bottom: 2px;
+      border-radius: 20px 20px 20px 20px;
+  }
+  #s {
+      margin-top: 2px;
+  }
+  #grid{
+    display: grid;
+    grid-template-columns:50% 50%;
+    background-color:white;   
+    text-align:center;
+    grid-auto-rows: minmax(100px,auto);
+    grid-gap: 5px;
+    margin: 10px;
+    font-size: larger;
+}
+#grid>a{
+    padding: 2rem;
+    background-color: red;
+    border:1px solid white;
+}
+a{
+    text-decoration:none;
+    color: black;
+}
+#paginator{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+</style>
+{% endblock%}
+{% block body %}
+<div id="grid">
+    <a href="/search?language=Javascript">Javascript</a>
+    <a href="/search?language=Python">Python</a>
+    <a href="/search?language=C%2B%2B">C++</a>
+    <a href="/search?language=Html">Html</a>
+    <a href="/search?language=Css">Css</a>
+    <a href="/search?language=SQL">SQL</a>
+    <a href="/search?language=Algorithm%26DataStructure">Algorithm and Data Structure</a>
+    <a href="/search?language=TimeComplexity">Time Complexity</a>
+    </div>
+{% include  "main/video/video.html" %}
+<div id="paginator" >
+    {% if upload.has_previous%}
+    <a href="?page={{upload.previous_page_number}}" class="btn btn-outline-primary"><strong>Previous</strong></a>
+    <a href="?page=1" class="btn btn-outline-primary"><strong>First</strong></a>
+    {% endif %}
+    <a href="?page={{upload.number}}" class="btn btn-outline-info">{{upload.number}}</a>
+    {% if upload.has_next %}
+    <a href="?page={{upload.next_page_number}}" class="btn btn-outline-primary"><strong>next</strong></a>
+    <a href="?page={{upload.paginator.num_pages}}" class="btn btn-outline-primary"><strong>last</strong></a>
+    {% endif %}
+</div>
+{% include "footer.html" %}
+<script>
+    const Like=async (vid)=>{
+        let response=await fetch(`/like_upload/${vid}`,{'Content-Type':"application/json"})
+        let result= await response.json()
+        let like=document.getElementById(`video-${vid}`)
+        like.innerText=` ${result.count}`;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+!{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style>
+#delete{
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:20px;
+    padding:10px;
+}
+</style>
+{% endblock%}
+{% block body %}
+<div id="delete">
+<form action="{% url 'acc_delete' %}" method="POST" >
+{% csrf_token %}
+<h1>Are you sure to delete account?</h1>
+<a href="{% url 'acc_profile'%}" class="btn btn-light">Cancel</a>
+<input type="submit" value="Delete Account Permanently" class="btn btn-danger"/>
+</form>
+</div>
+{% endblock %}

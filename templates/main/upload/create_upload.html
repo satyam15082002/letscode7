@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style>
+    #upload{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    input{
+        width: 50vw;
+    }
+    select{
+        width: 50vw;
+    }
+</style>
+{% endblock%}
+{% block body %}
+<div id="upload">
+    <form action="{% url 'create_upload' %}" method="POST">
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        {% for field in form %}
+        <p >
+        <h4 style="float:justify">{{field.name|upper}}</h4>
+        {{field}}
+        {{field.errors}}
+        </p>
+        <hr>
+        {% endfor%}
+        <input type="submit" value="Upload"  class="btn btn-success"/>
+        <hr>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'style/base.css' %}">
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+<header class="container-fluid text-center">
+    <i class="fa fa-code" aria-hidden="true" style="color: red;"></i>
+    Lets Code
+</header>
+<div id="nav" >
+    <a class="fa fa-home" href="{% url 'home' %}"></a>
+    <a class="fa fa-search" href="{% url 'search' %}"></a>
+    <a class="fa fa-fire" href="{% url 'trending' %}"></a>
+    {% if request.user.is_authenticated %}
+    <a class="fa fa-user-circle" href="{% url 'acc_profile' %}"></a>
+    {% else %}
+    <a class="fa fa-user-circle" href="{% url 'acc_signup' %}"></a>
+    {% endif %}
+</div>
+{% block body%}
+{% endblock %}
+<script src="{% static 'bootsrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

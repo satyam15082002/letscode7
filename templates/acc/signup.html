@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style>
+    .errorlist{
+        color:black;
+        list-style-type: none;
+        list-style-position: outside;
+        text-transform: capitalize;
+    }
+
+input{
+    width: 50vw;
+    border-style: none none solid none;
+    border-width: 0px 0px 1px 0px;
+    border-color: rgba(0, 0, 0, 0.747);
+}
+fieldset{
+    background: linear-gradient(yellow,red);
+    padding: 20px;
+}
+body{
+    background-color: azure;
+}
+</style>
+{% endblock %}
+{% block body %}
+<fieldset class="container text-center">
+    <h1>Signup</h1>
+    <hr>
+<form action="{% url 'acc_signup' %}" method="POST">
+    {% csrf_token %}
+    {{form.non_field_errors}}
+    {% for field in form %}
+    <p>
+    {{field}}
+    {{field.errors}}
+    </p>
+    <hr>
+    {% endfor%}
+    <input type="submit" value="Signup" style="width:50vw;" class="btn btn-success"/>
+    <hr>
+</form>
+<p><h3>Already have account? <a href="{% url 'acc_login' %}" style="color:blue;">Login</a></h3></p>
+</fieldset>
+{% endblock%}

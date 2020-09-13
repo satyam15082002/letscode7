@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style>
+    .like:hover{
+        color: red;
+  }
+  .s{
+      position: relative;
+      width: 100%;
+      height: 500px;
+      border-radius: 20px 20px 0px 0px;
+  }
+  .video{
+      justify-content: center;
+      text-align: center;
+      border: 1px solid black;
+      margin-bottom: 2px;
+      border-radius: 20px 20px 20px 20px;
+  }
+  #s {
+      margin-top: 2px;
+  }
+  #search{
+      text-align:center;
+      align-items: center;
+      padding:10px;
+      margin:10px;
+      font-size: large;
+  }
+
+</style>
+{% endblock%}
+{% block body %}
+<div id="search" class="card">
+    <form action="" method="GET">
+        {{filter.form}}
+        <input type="submit" value="search" class="btn btn-light"/>
+    </form>
+</div>
+{% include "main/video/video.html" %}
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,25 @@
+<div id="s" class="container">
+    {% for i in upload %}
+    <div class="video">
+        <iframe src="{{i.video}}" class="s"frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+        <h2><i>Title : {{i.title}} </i></h2>
+        <h1><i>posted by </i>{{i.user}}</h1>
+        {% if request.user.is_authenticated %}
+        <h1 class="like" onclick="Like({{i.id}})" ><a class="fa fa-check-circle"></a><span id="video-{{i.id}}"> {{i.like.count}}</span></h1>
+        {% else %}
+        <h1 class="like" ><a href="{% url 'acc_login' %}" class="fa fa-check-circle"></a><span id="video-{{i.id}}"> {{i.like.count}}</span></h1>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% if request.user.is_authenticated %}
+<script>
+    const Like=async (vid)=>{
+        let response=await fetch(`/like_upload/${vid}`,{'Content-Type':"application/json"})
+        let result= await response.json()
+        let like=document.getElementById(`video-${vid}`)
+        like.innerText=` ${result.count}`;
+    }
+</script>
+{% endif %}

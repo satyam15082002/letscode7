@@ -1,0 +1,28 @@
+#nav{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+}
+#nav>a{
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+}
+#nav>a:hover{
+    color: red;
+}
+
+header{
+    padding: 10px;
+    font-size: 30px;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
