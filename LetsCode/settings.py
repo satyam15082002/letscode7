@@ -25,7 +25,7 @@ SECRET_KEY = 'o2mk_b7r)4f_#+4)qd^dgvsc1u=ny2mkslrg%6tcq(j#ptyz3v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['letscode7.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['letscode7.herokuapp.com','localhost']
 
 # Application definition
 
